@@ -25,7 +25,7 @@ const Products = () => {
 
       try {
         // Fetch products data from local JSON
-        const productResponse = await fetch("../ddddddd.json");
+        const productResponse = await fetch("/ddddddd.json");
         const productData = await productResponse.json();
 
         // Fetch exactly 20 random images from Unsplash
