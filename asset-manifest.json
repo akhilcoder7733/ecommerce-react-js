@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/ecommerce-react-js/static/css/main.3059bddb.css",
+    "main.js": "/ecommerce-react-js/static/js/main.ff1ccb05.js",
+    "static/js/453.cd5db0a8.chunk.js": "/ecommerce-react-js/static/js/453.cd5db0a8.chunk.js",
+    "static/media/tech.jpg": "/ecommerce-react-js/static/media/tech.9bbd733eeca06cc9dd45.jpg",
+    "static/media/science.jpg": "/ecommerce-react-js/static/media/science.894d3cfdfbd95450771e.jpg",
+    "static/media/art.jpg": "/ecommerce-react-js/static/media/art.92deb8f2e82547637afc.jpg",
+    "static/media/Chicken.jpg": "/ecommerce-react-js/static/media/Chicken.1193d52c9f26ccec4ca9.jpg",
+    "static/media/cultural.jpg": "/ecommerce-react-js/static/media/cultural.155118d3f182c2b7e147.jpg",
+    "static/media/IMG_20250117_154300.jpg": "/ecommerce-react-js/static/media/IMG_20250117_154300.c75bf2964607dfa99d7d.jpg",
+    "static/media/Apples.jpg": "/ecommerce-react-js/static/media/Apples.738576e8fc32251c0c79.jpg",
+    "static/media/Milk.jpg": "/ecommerce-react-js/static/media/Milk.0975a3b4341640f09dd0.jpg",
+    "static/media/Carrots.jpg": "/ecommerce-react-js/static/media/Carrots.856dda552d36cad89a0e.jpg",
+    "static/media/sports.jpg": "/ecommerce-react-js/static/media/sports.5539e7dcf5b802c216e6.jpg",
+    "static/media/Coffee.jpg": "/ecommerce-react-js/static/media/Coffee.0a25153d4c410134a21f.jpg",
+    "static/media/IMG_20250117_170358.jpg": "/ecommerce-react-js/static/media/IMG_20250117_170358.cbf376b143d6c17bede0.jpg",
+    "static/media/IMG_20240130_140711.jpg": "/ecommerce-react-js/static/media/IMG_20240130_140711.768fa261cec63e43092a.jpg",
+    "static/media/not.png": "/ecommerce-react-js/static/media/not.79e09e07b33b77656e4f.png",
+    "static/media/Akhil.jpg": "/ecommerce-react-js/static/media/Akhil.4eee34df77340a81c160.jpg",
+    "index.html": "/ecommerce-react-js/index.html",
+    "main.3059bddb.css.map": "/ecommerce-react-js/static/css/main.3059bddb.css.map",
+    "main.ff1ccb05.js.map": "/ecommerce-react-js/static/js/main.ff1ccb05.js.map",
+    "453.cd5db0a8.chunk.js.map": "/ecommerce-react-js/static/js/453.cd5db0a8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3059bddb.css",
+    "static/js/main.ff1ccb05.js"
+  ]
+}
