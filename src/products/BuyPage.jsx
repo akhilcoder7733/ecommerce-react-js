@@ -74,7 +74,7 @@ const BuyPage = () => {
           <CardMedia
             component="img"
             sx={{ width: 160, objectFit: "cover", borderRadius: "8px 0 0 8px" }}
-            image={product.image || "https://via.placeholder.com/150"}
+            image={product.images || "https://via.placeholder.com/150"}
             alt={product.product_name}
           />
           <CardContent>

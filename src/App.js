@@ -4,9 +4,9 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Home from "./Pages/Home";
 import ProtectedRoute from "./ProtectedRoute";
-import Products from "./products/Products";
-import ProductDetails from "./products/ProductDetails";
-import BuyPage from "./products/BuyPage";
+import Products from "./Products/ProductsPage";
+import ProductDetails from "./Products/ProductDetails";
+import BuyPage from "./Products/BuyPage";
 import HeaderSection from "./Components/HeaderSection";
 import Footer from "./Components/Footer";
 import NotFound from "./Pages/NotFound";
@@ -39,8 +39,6 @@ function App() {
         </Route>
         <Route path="/register" element={<Register />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/products/:id" element={<ProductDetails />} />
-        <Route path="/buy" element={<BuyPage />} />
         <Route path="/not-logged" element={<NotLoggedIn />} />
         <Route path="/about" element={<About />} />
       </Routes>

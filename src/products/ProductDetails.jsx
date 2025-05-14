@@ -19,7 +19,7 @@ function ProductDetails() {
         <CardMedia
           component="img"
           sx={{ width: "100%", height: 300, objectFit: "cover", borderRadius: 2 }}
-          image={product.image || "https://via.placeholder.com/150"}
+          image={product.images || "https://via.placeholder.com/150"}
           alt={product.product_name}
         />
         <CardContent>

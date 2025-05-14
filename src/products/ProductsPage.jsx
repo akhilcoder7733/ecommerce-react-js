@@ -1,59 +1,56 @@
-import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  Grid,
-  Rating,
-  Button,
-} from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { useLoading } from "../LoadingContext"; // Import loading context
+import React, { useState, useEffect } from 'react';
+import { Card, CardContent, Typography, Button, CardMedia, Grid, Box, Rating } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { useLoading } from '../LoadingContext';
 
-const UNSPLASH_ACCESS_KEY = "J-qbT0O35p148H0U0JfYwWucORglKw1aU3cknsbFqag";
+const UNSPLASH_ACCESS_KEY = "UgAiWx60EQ_CpuyJxajPxzxvNzyHsKa9nmv4gpV5KMU";
 
-const Products = () => {
+const ProductsPage = () => {
   const [products, setProducts] = useState([]);
+  const [images, setImages] = useState([]); // State for storing fetched Unsplash images
   const navigate = useNavigate();
   const { setLoading } = useLoading(); // Use loading context
 
+  // Function to fetch Unsplash images based on product name
+  const fetchUnsplashImages = async (productName) => {
+    try {
+      const response = await fetch(
+        `https://api.unsplash.com/photos/random?query=${productName}&client_id=${UNSPLASH_ACCESS_KEY}&count=1`
+      );
+      const data = await response.json();
+      return data[0]?.urls?.regular; // Return the image URL
+    } catch (error) {
+      console.error('Error fetching Unsplash images:', error);
+      return ''; // Return an empty string if there's an error
+    }
+  };
+
+  // Fetch products from JSON file and Unsplash images
   useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true); // Start loading
-
+    const fetchData = async () => {
+      setLoading(true); // Set loading to true when fetching starts
       try {
-        // Fetch products data from local JSON
-        const productResponse = await fetch("/ddddddd.json");
-        const productData = await productResponse.json();
+        const response = await fetch('/products.json'); // assuming products.json is in the public folder
+        const data = await response.json();
+        setProducts(data); // Store the fetched data in state
 
-        // Fetch exactly 20 random images from Unsplash
-        const unsplashResponse = await fetch(
-          `https://api.unsplash.com/photos/random?query=electronics&count=20&client_id=${UNSPLASH_ACCESS_KEY}`
-        );
-        const unsplashImages = await unsplashResponse.json();
+        // Fetch Unsplash images for each product
+        const imagesPromises = data.map(async (product) => {
+          const imageUrl = await fetchUnsplashImages(product.product_name);
+          return imageUrl;
+        });
 
-        // Map products with images
-        const updatedProducts = productData
-          .slice(0, 20)
-          .map((product, index) => ({
-            ...product,
-            image:
-              unsplashImages[index]?.urls?.regular ||
-              "https://via.placeholder.com/300",
-          }));
-
-        setProducts(updatedProducts);
+        const fetchedImages = await Promise.all(imagesPromises);
+        setImages(fetchedImages); // Store the fetched images in state
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       } finally {
-        setLoading(false); // Stop loading
+        setLoading(false); // Set loading to false once the data is fetched
       }
     };
 
-    fetchProducts();
-  }, [setLoading]);
+    fetchData();
+  }, [setLoading]); // empty dependency array to run once on mount
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -61,7 +58,7 @@ const Products = () => {
   }, []);
 
   return (
-    <Box sx={{ padding: 4, minHeight:"90vh" }}>
+    <Box sx={{ padding: 4, minHeight: "90vh" }}>
       <Typography variant="h4" gutterBottom textAlign="center">
         Accessories Store
       </Typography>
@@ -75,20 +72,20 @@ const Products = () => {
                 display: "flex",
                 flexDirection: "column",
                 borderRadius: 3,
-                boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)", // Improved boxShadow
+                boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)",
                 transition:
-                  "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out", // Smoother transition
+                  "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
                 overflow: "hidden",
                 "&:hover": {
-                  transform: "translateY(-5px)", // Move card up on hover
-                  boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.25)", // Enhanced boxShadow on hover
+                  transform: "translateY(-5px)",
+                  boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.25)",
                 },
               }}
             >
               <CardMedia
                 component="img"
                 height="200"
-                image={product.image}
+                image={images[index] || '/fallback-image.jpg'} // Use the fetched Unsplash image or a fallback image
                 alt={product.product_name}
                 sx={{ objectFit: "cover" }}
               />
@@ -161,4 +158,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductsPage;
